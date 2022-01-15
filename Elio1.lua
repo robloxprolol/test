@@ -10,8 +10,7 @@ T = Taunt
 
 Player=game.Players.LocalPlayer
 Character=Player.Character
-Character.Humanoid.Name = "noneofurbusiness"
-hum = Character.noneofurbusiness
+hum = Character.Humanoid
 LeftArm=Character["Left Arm"]
 LeftLeg=Character["Left Leg"]
 RightArm=Character["Right Arm"]
@@ -118,37 +117,6 @@ tr1.Color = COLOR
 tr1.Transparency = NumberSequence.new(0, 1)
 end
 
-shirt = Instance.new("Shirt", Character)
-shirt.Name = "Shirt"
-pants = Instance.new("Pants", Character)
-pants.Name = "Pants"
-Character.Shirt.ShirtTemplate = "http://www.roblox.com/asset/?id=1123249914"
-Character.Pants.PantsTemplate = "http://www.roblox.com/asset/?id=1839310233"
-
-skull = Instance.new("Part",Character)
-skull.Size = Vector3.new(2,2,2)
-skull.CFrame = Head.CFrame
-skull.CanCollide = false
-skullweld = Instance.new("Weld",skull)
-skullweld.Part0 = skull
-skullweld.Part1 = Head
-skullweld.C0 = skull.CFrame:inverse() * Head.CFrame 
-mskull = Instance.new("SpecialMesh", skull)
-mskull.MeshType = "FileMesh"
-mskull.Scale = Vector3.new(1.12, 1.12, 1.12)
-mskull.MeshId,mskull.TextureId = 'http://www.roblox.com/asset/?id=181343290','http://www.roblox.com/asset/?id=181343313'
-fedora = Instance.new("Part",Character)
-fedora.Size = Vector3.new(2,2,2)
-fedora.CFrame = Head.CFrame
-fedora.CanCollide = false
-fedoraweld = Instance.new("Weld",fedora)
-fedoraweld.Part0 = fedora
-fedoraweld.Part1 = Head
-fedoraweld.C0 = fedora.CFrame:inverse() * Head.CFrame * CFrame.new(0,-.8,0)
-mfedora = Instance.new("SpecialMesh", fedora)
-mfedora.MeshType = "FileMesh"
-mfedora.Scale = Vector3.new(1.1, 1.1, 1.1)
-mfedora.MeshId,mfedora.TextureId = 'http://www.roblox.com/asset/?id=13640868','http://www.roblox.com/asset/?id=18987684'
 tommygun = Instance.new("Part",Character)
 tommygun.Size = Vector3.new(2,2,2)
 tommygun.CFrame = RightArm.CFrame
@@ -193,18 +161,6 @@ mtommygunammo = Instance.new("SpecialMesh", tommygunammo)
 mtommygunammo.MeshType = "FileMesh"
 mtommygunammo.Scale = Vector3.new(1, 1, 1)
 mtommygunammo.MeshId,mtommygunammo.TextureId = 'http://www.roblox.com/asset/?id=116740155','http://www.roblox.com/asset/?id=116679995'
-mask = Instance.new("Part",Character)
-mask.Size = Vector3.new(2,2,2)
-mask.CFrame = Head.CFrame
-mask.CanCollide = false
-maskweld = Instance.new("Weld",mask)
-maskweld.Part0 = mask
-maskweld.Part1 = Head
-maskweld.C0 = mask.CFrame:inverse() * Head.CFrame * CFrame.new(-.2,0,.62) * CFrame.Angles(math.rad(0),math.rad(10),math.rad(0))
-mmask = Instance.new("SpecialMesh", mask)
-mmask.MeshType = "FileMesh"
-mmask.Scale = Vector3.new(1.25, 1.25, 1.25)
-mmask.MeshId,mmask.TextureId = 'http://www.roblox.com/asset/?id=12470186','http://www.roblox.com/asset/?id=12470201'
 
 
 
@@ -241,23 +197,7 @@ end
 end)()
 
 function damagealll(Radius,Position)		
-	local Returning = {}		
-	for _,v in pairs(workspace:GetChildren()) do		
-		if v~=Character and v:FindFirstChildOfClass('Humanoid') and v:FindFirstChild('Torso') or v:FindFirstChild('UpperTorso') then
-if v:FindFirstChild("Torso") then		
-			local Mag = (v.Torso.Position - Position).magnitude		
-			if Mag < Radius then		
-				table.insert(Returning,v)		
-			end
-elseif v:FindFirstChild("UpperTorso") then	
-			local Mag = (v.UpperTorso.Position - Position).magnitude		
-			if Mag < Radius then		
-				table.insert(Returning,v)		
-			end
-end	
-		end		
-	end		
-	return Returning		
+	
 end
 
 ArtificialHB = Instance.new("BindableEvent", script)
@@ -499,8 +439,6 @@ switch2 = false
 light.Enabled = false
 end
 pcall(function()
-if mouse.Target.Parent:FindFirstChildOfClass("Humanoid") then
-mouse.Target.Parent:FindFirstChildOfClass("Humanoid"):TakeDamage(math.random(3,7))
 end
 end)
 end
@@ -514,9 +452,6 @@ if shooting then
 LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(1, 1.35, 0.4) * CFrame.Angles(math.rad(-90), math.rad(0 - 10 * math.sin(sine)), math.rad(0)), 0.25)
 RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(-1, 0.1 + .4 * math.sin(sine), 0.4) * CFrame.Angles(math.rad(-90), math.rad(-60), math.rad(0)), 0.25)
 pcall(function()
-if mouse.Target.Parent:FindFirstChildOfClass("Humanoid") then
-mouse.Target.Parent:FindFirstChildOfClass("Humanoid"):TakeDamage(1)
-end
 end)
 elseif not shooting then
 end
@@ -686,7 +621,6 @@ function immortality()
 				hum:Remove()
 				PART.Parent = PARENT
 				hum = Instance.new("Humanoid",Character)
-                                hum.Name = "noneofurbusiness"
 			end
 		end
 	end
