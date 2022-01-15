@@ -9,7 +9,8 @@ T = Taunt
 --Using a FE converter because i'm way too lazy to create remotes for it--
 
 Player=game.Players.LocalPlayer
-Character=Player.Character
+Character=Player.Character.non
+
 hum = Character.Humanoid
 LeftArm=Character["Left Arm"]
 LeftLeg=Character["Left Leg"]
@@ -115,7 +116,8 @@ tr1.TextureMode = "Static"
 tr1.LightInfluence = 0
 tr1.Color = COLOR
 tr1.Transparency = NumberSequence.new(0, 1)
-end
+end
+
 
 skull = Instance.new("Part",Character)
 skull.Size = Vector3.new(2,2,2)
